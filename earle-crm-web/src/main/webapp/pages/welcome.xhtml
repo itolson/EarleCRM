@@ -1,0 +1,33 @@
+<ui:composition template="../templates/basic-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">  
+    <ui:define name="content">
+        <h:form>
+
+            <p:panel>  
+
+                <p:panel rendered="#{loginGateway.invalidLoginAttempt}">
+                    <h:outputText value="invalid login"/>    
+                </p:panel> 
+
+                <p:panel>
+                    <h:panelGrid columns="2">  
+                        <h:outputText value="Username" />  
+                        <p:inputText value="#{loginGateway.username}" required="true" label="Username" autocomplete="false"/>  
+
+                        <h:outputText value="Password" />  
+                        <h:inputSecret value="#{loginGateway.password}" required="true" label="Password" autocomplete="false"/>
+                    </h:panelGrid>  
+                    <h:commandButton value="Login" action="#{loginGateway.login}"/>  
+                </p:panel>
+
+
+
+            </p:panel>  
+
+        </h:form>  
+    </ui:define>  
+</ui:composition>
