@@ -1,0 +1,50 @@
+<ui:composition template="/templates/basic-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">  
+    <ui:define name="content">
+        <p:growl id="growl" showDetail="true" sticky="false"/>
+        <h:form>
+            <p:fieldset legend="Claims Track Search Insured" styleClass="tabheader1">
+                <p:menubar model="#{buildMenu.model}"/>
+                <p></p>
+                <p:fieldset toggleable="false" legend="Search Insured" styleClass="tabheader">
+                    <p:focus context="insuredsearch"/>
+                    <h:panelGrid id="insuredsearch" columns="6" styleClass="width100">
+                        <h:outputText value="Search :"  styleClass="descleft"/>
+                        <p:inputText id="insuredsearchtext" required="true"/>
+                        <h:commandButton value="Search" action="dispData.xhtml" label="searchClaim"/> 
+                        <h:outputText value="By: " styleClass="descleft"/>
+                        <p:selectOneMenu id="insuredsearchtype" value="Search By" styleClass="descleft" effect="fade">
+                            <f:selectItem itemLabel="by Name" itemValue="" />
+                            <f:selectItem itemLabel="by Address" itemValue="1" />
+                            <f:selectItem itemLabel="by Panel Firm" itemValue="" />
+                            <f:selectItem itemLabel="by Panel Instructions" itemValue="1" />
+                            <f:selectItem itemLabel="All Panel Instructions" itemValue="1" />                                
+                        </p:selectOneMenu>
+                    </h:panelGrid> 
+                    <p:dataTable value="#{insuredPopulate.rows}" var="row" paginator="true" rows="15" style="table-layout: fixed"
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{insuredPopulate.selectedRow}" id="messageTable" lazy="true" rowKey="#{row.columns}" >
+                        <p:columnGroup type="header">
+                            <p:row>
+                                <p:column headerText="Name" sortBy="#{row.columns[0]}" filterBy="#{row.columns[0]}" styleClass="col11detailss"/>
+                                <p:column headerText="Address" sortBy="#{row.columns[1]}" filterBy="#{row.columns[1]}" styleClass="col11detailss"/>
+                                <p:column headerText="Telephone" sortBy="#{row.columns[2]}" filterBy="#{row.columns[2]}" styleClass="col11l"/>                                        
+                                <p:column headerText="Contact" sortBy="#{row.columns[3]}" filterBy="#{row.columns[3]}" styleClass="col11l"/>
+                                <p:column headerText="Email" sortBy="#{row.columns[4]}" filterBy="#{row.columns[4]}" styleClass="col11detailss"/>                                                                        
+                            </p:row>
+                        </p:columnGroup>
+                        <p:column styleClass="col11detailss">#{row.columns[0]}</p:column>
+                        <p:column styleClass="col11detailss">#{row.columns[1]}</p:column>
+                        <p:column styleClass="col11c">#{row.columns[2]}</p:column>
+                        <p:column styleClass="col11l">#{row.columns[3]}</p:column>
+                        <p:column styleClass="col11detailss">#{row.columns[4]}</p:column>                        
+                    </p:dataTable>
+                </p:fieldset>
+            </p:fieldset>
+        </h:form>
+    </ui:define>  
+</ui:composition>	

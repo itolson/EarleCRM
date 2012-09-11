@@ -50,7 +50,7 @@ public class LoginAuthenitcatorService implements Serializable {
     }
     
     private boolean isAuthenitcated(UserDetails userDetails, String userId, String password) {
-        return (userDetails.getPassword().equals(password) && MAX_LOGIN_FAILED_LOGIN_ATTEMPTS <= userDetails.getFailedLoginAttempts());
+        return (userDetails.getPassword().equals(password) && MAX_LOGIN_FAILED_LOGIN_ATTEMPTS >= userDetails.getFailedLoginAttempts());
     }
     
     private void incrementFailedLoginAttempts(UserDetails userDetails) {

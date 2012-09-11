@@ -1,0 +1,62 @@
+<ui:composition template="/templates/basic-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">  
+    <ui:define name="content">
+        <p:growl id="growl" showDetail="true" sticky="false"/>
+        <h:form>
+            <p:fieldset legend="Claims Track Search Claims" styleClass="tabheader1">
+                <p:menubar model="#{buildMenu.model}"/>
+                <p></p>                
+                <p:fieldset toggleable="false" legend="Search Claims" styleClass="tabheader">
+                    <p:focus context="claimsearch"/>
+                    <h:panelGrid id="claimsearch" columns="6" styleClass="width100" columnClasses="className">
+                        <h:outputText value="Search :"  styleClass="descleft"/>
+                        <p:inputText id="claimsearchtext" required="true"/>
+                        <h:commandButton value="Search" action="dispData.xhtml" label="searchClaim"/>
+                        <h:outputText value="By: " styleClass="descleft"/>
+                        <p:selectOneMenu id="claimsearchtype" value="Search By" effect="fade">
+                            <f:selectItem itemLabel="by Insured Type" itemValue="" />
+                            <f:selectItem itemLabel="by Claim No" itemValue="1" />
+                            <f:selectItem itemLabel="by Claiment" itemValue="" />
+                            <f:selectItem itemLabel="by Broker Ref" itemValue="1" />
+                            <f:selectItem itemLabel="by Loss Location" itemValue="" />
+                            <f:selectItem itemLabel="by Area of Practice" itemValue="1" />
+                            <f:selectItem itemLabel="by Claim Supervisor" itemValue="" />
+                            <f:selectItem itemLabel="by Claim Handler" itemValue="1" />
+                            <f:selectItem itemLabel="by Panel Firm" itemValue="" />
+                            <f:selectItem itemLabel="by Panel Instructions" itemValue="1" />
+                            <f:selectItem itemLabel="All Panel Instructions" itemValue="1" />                                
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <p:dataTable value="#{claimsPopulate.rows}" var="row" paginator="true" rows="15" style="table-layout: fixed"
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{claimsPopulate.selectedRow}" id="messageTable" lazy="true" rowKey="#{row.columns}" >
+                        <p:columnGroup type="header">
+                            <p:row>
+                                <p:column headerText="Beale Ref" sortBy="#{row.columns[0]}" filterBy="#{row.columns[0]}" styleClass="col11l"/>
+                                <p:column headerText="Broker" sortBy="#{row.columns[1]}" filterBy="#{row.columns[1]}" styleClass="col11detailss"/>
+                                <p:column headerText="Broker Ref" sortBy="#{row.columns[2]}" filterBy="#{row.columns[2]}" styleClass="col11l"/>                                        
+                                <p:column headerText="Profession" sortBy="#{row.columns[3]}" filterBy="#{row.columns[3]}" styleClass="col11detailss"/>
+                                <p:column headerText="Date Rc Insurer" sortBy="#{row.columns[4]}" filterBy="#{row.columns[4]}" styleClass="coldte11"/>
+                                <p:column headerText="Incurred / MPL" sortBy="#{row.columns[5]}" filterBy="#{row.columns[5]}" styleClass="col11l"/>
+                                <p:column headerText="Details of Loss" sortBy="#{row.columns[6]}" filterBy="#{row.columns[6]}" styleClass="col11detailsl"/>
+                                <p:column headerText="Current Position" sortBy="#{row.columns[7]}" filterBy="#{row.columns[7]}" styleClass="col11detailsl"/>
+                            </p:row>
+                        </p:columnGroup>
+                        <p:column styleClass="col11l">#{row.columns[0]}</p:column>
+                        <p:column styleClass="col11detailss">#{row.columns[1]}</p:column>
+                        <p:column styleClass="col11l">#{row.columns[2]}</p:column>
+                        <p:column styleClass="col11detailss">#{row.columns[3]}</p:column>
+                        <p:column styleClass="coldte11">#{row.columns[4]}</p:column> 
+                        <p:column styleClass="col11l">#{row.columns[5]}</p:column>
+                        <p:column styleClass="col11detailsl">#{row.columns[6]}</p:column>
+                        <p:column styleClass="col11detailsl">#{row.columns[7]}</p:column>
+                    </p:dataTable>
+                </p:fieldset>
+            </p:fieldset>
+        </h:form>
+    </ui:define>  
+</ui:composition>	

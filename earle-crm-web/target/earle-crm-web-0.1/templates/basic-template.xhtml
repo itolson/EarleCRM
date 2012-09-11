@@ -8,32 +8,18 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <h:head>
+            <title>Claim Tracker Home Page</title>
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/earle.css" />
 
-    <h:head>
-        <title>Title</title>
-    </h:head>
-    <h:body>
-        <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">
-                <ui:include src="../components/common/header.xhtml"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">
-                <ui:include src="../components/common/content-left.xhtml"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
-                <ui:include src="../components/common/content-left.xhtml"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center">
-                <ui:insert name="content"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
-                <ui:include src="../components/common/footer.xhtml"/>
-            </p:layoutUnit>
-
-        </p:layout>
-    </h:body>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="center">
+                    <ui:insert name="content"/>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
 </html>

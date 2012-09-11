@@ -87,8 +87,8 @@
             </plugin>
 
             <!-- this uses embedded glassfish for running the app or tests.
-          we do not use this for development because you cannot debug
-          docs: http://embedded-glassfish.java.net/nonav/plugindocs/3.1/plugin-info.html -->
+            we do not use this for development because you cannot debug
+            docs: http://embedded-glassfish.java.net/nonav/plugindocs/3.1/plugin-info.html -->
             <plugin>
                 <groupId>org.glassfish</groupId>
                 <artifactId>maven-embedded-glassfish-plugin</artifactId>
@@ -289,12 +289,18 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.5.6</version>
         </dependency>
+        
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.5.6</version>
         </dependency>
         
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>cupertino</artifactId>
+            <version>1.0.6</version>
+        </dependency>
     
         <dependency>  
             <groupId>org.primefaces</groupId>  

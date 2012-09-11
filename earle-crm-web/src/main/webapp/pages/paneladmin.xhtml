@@ -1,0 +1,86 @@
+<ui:composition template="/templates/basic-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">  
+    <ui:define name="content">
+        <p:growl id="growl" showDetail="true" sticky="false"/>
+        <h:form>
+            <p:fieldset legend="Claims Track Administer Panel Details" styleClass="tabheader1">
+                <p:menubar model="#{buildMenu.model}"/>
+                <p></p>
+                <p:fieldset toggleable="false" legend="Panel Administration" styleClass="tabheader"> 
+                    <p:fieldset legend="Add" toggleable="true" toggleSpeed="100" collapsed="true" styleClass="tabheader1"> 
+                        <p:focus context="panelsearch"/>                    
+                        <h:panelGrid id="panelsearch" columns="6" styleClass="width100" cellspacing="2" cellpadding="2">
+                            <h:panelGrid id="paneldetails" columns="6" styleClass="width100" cellspacing="2" cellpadding="2">
+                                <p:column>                        
+                                    <h:outputText value="Panel Name:"  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText id="panelName" required="true"/>
+                                </p:column>
+                                <p:column>                        
+                                    <h:outputText value="First Name:"  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText id="firstName" required="true"/>
+                                </p:column>
+                                <p:column>                            
+                                    <h:outputText value="Surname: "  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>                            
+                                    <p:inputText id="Surame" required="true"/>
+                                </p:column>
+                                <p:column>                        
+                                    <h:outputText value="Extension:"  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText id="telExt" required="true"/>
+                                </p:column>
+                                <p:column>                            
+                                    <h:outputText value="Position: "  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>                            
+                                    <p:inputText id="Position" required="true"/>
+                                </p:column>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                        <P></P>
+                        <div><h:commandButton value="Save Details" action="#{newClaim.bealRef}" label="BealRef" styleClass="right"/>
+                            <h:commandButton value="Discard Changes" action="#{newClaim.bealRef}" label="BealRef" styleClass="right"/></div>
+
+                    </p:fieldset>
+                    <p:focus context="panelsearch"/>
+                    <p:panelGrid styleClass="width100">
+                        <p:row>
+                            <p:column styleClass="disphighbold" colspan="6">Administer Panel Details</p:column>
+                        </p:row>
+                    </p:panelGrid>
+
+                    <p:dataTable value="#{panelPopulate.rows}" var="row" paginator="true" rows="15" style="table-layout: fixed"
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{panelPopulate.selectedRow}" id="messageTable" lazy="true" rowKey="#{row.columns}" >
+                        <p:columnGroup type="header">
+                            <p:row>
+                                <p:column headerText="Name" sortBy="#{row.columns[0]}" filterBy="#{row.columns[0]}" styleClass="col11detailss"/>
+                                <p:column headerText="Address" sortBy="#{row.columns[1]}" filterBy="#{row.columns[1]}" styleClass="col11detailss"/>
+                                <p:column headerText="Telephone" sortBy="#{row.columns[2]}" filterBy="#{row.columns[2]}" styleClass="col11c"/>                                        
+                                <p:column headerText="Contact" sortBy="#{row.columns[3]}" filterBy="#{row.columns[3]}" styleClass="col11l"/>
+                                <p:column headerText="Email" sortBy="#{row.columns[4]}" filterBy="#{row.columns[4]}" styleClass="col11detailss"/>                                                                        
+                            </p:row>
+                        </p:columnGroup>
+                        <p:column styleClass="coldte11l">#{row.columns[0]}</p:column>
+                        <p:column styleClass="col11detailss">#{row.columns[1]}</p:column>
+                        <p:column styleClass="col11c">#{row.columns[2]}</p:column>
+                        <p:column styleClass="col11l">#{row.columns[3]}</p:column>
+                        <p:column styleClass="col11detailss">#{row.columns[4]}</p:column>                        
+                    </p:dataTable>
+
+                    <P></P>
+                </p:fieldset>
+            </p:fieldset>
+        </h:form>
+    </ui:define>  
+</ui:composition>
