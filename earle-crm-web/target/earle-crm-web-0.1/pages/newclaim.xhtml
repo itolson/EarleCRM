@@ -1,0 +1,273 @@
+<ui:composition template="/templates/basic-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">  
+    <ui:define name="content">
+        <p:growl id="messages" showDetail="true" sticky="true"/>
+        <h:form>
+            <p:fieldset legend="Claims Track - Setup New Claim" styleClass="tabheader1">
+                <p:menubar model="#{buildMenu.model}"/>
+                <p></p>
+                <p:tabView id="tabView" styleClass="tabheader">
+                    <p:tab id="tab1" title="Setup Claim Page 1" titletip="Enter Claim Details Screen 1">
+                        <p:focus context="claimdetails"/>
+                        <h:panelGrid id="claimdetails" columns="6" styleClass="width100" cellspacing="2" cellpadding="2">
+                            <p:column>
+                                <h:outputText value="Beale Ref: " styleClass="descleft" />
+                            </p:column>
+                            <p:column>
+                                <p:inputMask value="#{newClaim.bealRef}" mask="a*999999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Fee Earner: " styleClass="descleft"/>
+                            </p:column>                        
+                            <p:column>
+                                <p:selectOneMenu value="Fee Earner" styleClass="descleft" effect="fade">
+                                    <f:selectItem itemLabel="Joe Bloggs" itemValue="" />
+                                    <f:selectItem itemLabel="Joe Blogs 1" itemValue="1" />
+                                    <f:selectItem itemLabel="Ann Smith" itemValue="2" />
+                                    <f:selectItem itemLabel="Anna Smith" itemValue="3" />
+                                    <f:selectItem itemLabel="Someone Else" itemValue="4" />
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>                        
+                                <h:outputText value="Partner: " styleClass="descleft" />
+                            </p:column>
+                            <p:column>                        
+                                <p:selectOneMenu value="Fee Earner" styleClass="descleft" effect="fade">
+                                    <f:selectItem itemLabel="Joe Bloggs" itemValue="" />
+                                    <f:selectItem itemLabel="Joe Blogs 1" itemValue="1" />
+                                    <f:selectItem itemLabel="Ann Smith" itemValue="2" />
+                                    <f:selectItem itemLabel="Anna Smith" itemValue="3" />
+                                    <f:selectItem itemLabel="Someone Else" itemValue="4" />
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>                        
+                                <h:outputText value="Aviva Ref: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputMask value="#{maskController.ssn}" mask="a*999999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Insured: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputText id="Insured" required="true"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Policy Number: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputMask value="#{maskController.ssn}" mask="a*999999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Year of Account: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputMask value="#{maskController.ssn}" mask="9999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Lead/Follow: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputMask value="#{maskController.ssn}" mask="9999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Avia Line: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputMask value="#{maskController.ssn}" mask="9999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Claimant: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputText id="Claimant"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Claimant Solicitors: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="ClaimantSolicitors"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Broker: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputText id="Broker"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Brokers Ref: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputMask value="#{maskController.ssn}" mask="9999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Cause Code: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputMask value="#{maskController.ssn}" mask="a*999999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Sub Cause: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:inputMask value="#{maskController.ssn}" mask="a*999999" styleClass="inpleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <h:outputText value="Date Received: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:calendar value="#{calendarBean.date1}"  navigator="true" id="DateReceived" showButtonPanel="true" pattern="dd/MM/yyyy" styleClass="dtepick"/>
+                            </p:column>
+
+                            <p:column>                        
+                                <h:outputText value="Profession: " styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:selectOneMenu value="Profession" styleClass="descleft" effect="fade">
+                                    <f:selectItem itemLabel="Solicitors" itemValue="" />
+                                    <f:selectItem itemLabel="Accountants" itemValue="1" />
+                                    <f:selectItem itemLabel="Architects" itemValue="2" />
+                                    <f:selectItem itemLabel="Another Type" itemValue="3" />
+                                    <f:selectItem itemLabel="Yet another one" itemValue="4" />
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Area of Practice: " styleClass="descleft"/>
+                            </p:column>
+                            <p:column>                            
+                                <p:selectOneMenu value="AreaofPractice" styleClass="descleft" effect="fade">
+                                    <f:selectItem itemLabel="Solicitors" itemValue="1" />
+                                    <f:selectItem itemLabel="Accountants" itemValue="2" />
+                                    <f:selectItem itemLabel="Architects" itemValue="3" />
+                                    <f:selectItem itemLabel="Another Type" itemValue="4" />
+                                    <f:selectItem itemLabel="Yet another one" itemValue="5" />
+                                </p:selectOneMenu>
+                            </p:column>
+                        </h:panelGrid>
+                        <h:commandButton value="Save" action="#{newClaim.bealRef}"/> 
+                    </p:tab>
+                    <p:tab id="tab2" title="Setup Claim Page 2" titletip="Enter Claim Details Screen 2">
+                        <h:panelGrid columns="6" styleClass="width100" cellspacing="2" cellpadding="2">
+                            <p:column>                          
+                                <h:outputText value="Initial Case Estimate: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:inputMask value="#{maskController.ssn}" mask="£9999999999" styleClass="inpleft"/>                        
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="Case Estimate Indemnity: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:inputMask value="#{maskController.ssn}" mask="£9999999999" styleClass="inpleft"/>                         
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="Indemnity Payments: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:inputMask value="#{maskController.ssn}" mask="£9999999999" styleClass="inpleft"/>                                                 
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="Claimant Costs Estimate: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:inputMask value="#{maskController.ssn}" mask="£9999999999" styleClass="inpleft"/>                                                                         
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="Claimant Costs Paid: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:inputMask value="#{maskController.ssn}" mask="£9999999999" styleClass="inpleft"/>                                                                                                 
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="Total Incurred: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:inputMask value="#{maskController.ssn}" mask="£9999999999" styleClass="inpleft"/>                                                                                                 
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="MPL: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:inputMask value="#{maskController.ssn}" mask="£9999999999" styleClass="inpleft"/> 
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="Claim/Circumstance: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:inputText id="ClaimCircumstance"/>  
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="Date Settled: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:calendar value="#{calendarBean.date1}" navigator="true" id="DateSettled" showButtonPanel="true" pattern="dd/MM/yyyy" styleClass="inpleft"/>   
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="PAP Letter of Claim Served: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:selectBooleanButton id="PAPletterofclaim" value="yes" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close"/>                       
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="PAP Response Due: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:calendar value="#{calendarBean.date1}"  navigator="true" id="PAPResponseDue" showButtonPanel="true" pattern="dd/MM/yyyy" styleClass="inpleft"/>   
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="PAP Response Sent: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:calendar value="#{calendarBean.date1}"  navigator="true" id="PAPResponseSent" showButtonPanel="true" pattern="dd/MM/yyyy"  styleClass="inpleft"/>  
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="Fraud: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:selectBooleanButton id="Fraud" value="yes" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close"/>                                               
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="File Open Date: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:calendar value="#{calendarBean.date1}"  navigator="true" id="FileOpenDate" showButtonPanel="true" pattern="dd/MM/yyyy" styleClass="inpleft"/>  
+                            </p:column>
+                            <p:column>  
+                                <h:outputText value="File Closed Date: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>  
+                                <p:calendar value="#{calendarBean.date1}"  navigator="true" id="FileClosedDate" showButtonPanel="true" pattern="dd/MM/yyyy" styleClass="inpleft"/>  
+                            </p:column>
+                        </h:panelGrid>
+                    </p:tab>
+
+                    <p:tab id="tab3" title="Setup Claim Page 3" titletip="Enter Claim Details Screen 3">
+                        <h:panelGrid columns="4" styleClass="width100" cellpadding="4">
+                            <p:column>
+                                <h:outputText value="Details of Loss: " styleClass="descleft"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputTextarea rows="5" cols="100" autoResize="true" styleClass="descleft"/>
+                            </p:column>                                                    
+
+                            <p:column>
+                                <h:outputText value="Reason for Removal from DA: "  styleClass="descleft"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="ResonforremovalfromDA" styleClass="descleft"/> 
+
+                            </p:column>                        
+                        </h:panelGrid>
+                    </p:tab>
+                </p:tabView>
+            </p:fieldset>
+        </h:form>
+    </ui:define>  
+</ui:composition>			
+
+
+

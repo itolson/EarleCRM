@@ -1,0 +1,89 @@
+<ui:composition template="/templates/basic-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">  
+    <ui:define name="content">
+        <p:growl id="growl" showDetail="true" sticky="false"/>
+        <h:form>
+            <p:fieldset legend="Claims Track Administer Users Details" styleClass="tabheader1">
+                <p:menubar model="#{buildMenu.model}"/>
+                <p></p>
+                <p:fieldset toggleable="false" legend="User Administration" styleClass="tabheader"> 
+                    <p:fieldset  legend="Add" toggleable="true" toggleSpeed="100" collapsed="true" styleClass="tabheader1"> 
+                        <p:focus context="usersearch"/>  
+                        <h:panelGrid id="usersearch" columns="6" styleClass="width100" cellspacing="2" cellpadding="2">
+                            <p:column>
+                               <h:outputText id="firstname" value="First Name:" styleClass="descleft"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText id="firstName"/>
+                                </p:column>
+                                <p:column>                            
+                                    <h:outputText value="Surname: "  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>                            
+                                    <p:inputText id="Surame"/>
+                                </p:column>
+                                <p:column>                        
+                                    <h:outputText value="Telephone:"  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>
+                                    <p:inputText id="telExt"/>
+                                </p:column>
+                                <p:column>                            
+                                    <h:outputText value="Hourly Rate: "  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>                            
+                                    <p:inputText id="hourlyRate"/>
+                                </p:column>
+                                <p:column>                            
+                                    <h:outputText value="Email: "  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>                            
+                                    <p:inputText id="Email"/>
+                                </p:column>
+                                <p:column>  
+                                    <h:outputText value="Partner: "  styleClass="descleft"/>
+                                </p:column>
+                                <p:column>  
+                                    <p:selectBooleanButton id="Partner" value="yes" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close"/>                                               
+                                </p:column>
+                        </h:panelGrid>
+                        <P></P>
+                        <div><h:commandButton value="Save Details" action="#{newClaim.bealRef}" label="BealRef" styleClass="right"/>
+                            <h:commandButton value="Discard Changes" action="#{newClaim.bealRef}" label="BealRef" styleClass="right"/></div>
+                    </p:fieldset>
+
+                    <h:panelGrid id="panelsearch" columns="8" styleClass="width100" cellspacing="2" cellpadding="2">
+                    </h:panelGrid>
+                    <p:panelGrid styleClass="width100">
+                        <p:row>
+                            <p:column styleClass="disphighbold" colspan="6">Administer Users Details</p:column>
+                        </p:row>
+                    </p:panelGrid>
+
+                    <p:dataTable value="#{usersPopulate.rows}" var="row" paginator="true" rows="15" style="table-layout: fixed"
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{usersPopulate.selectedRow}" id="messageTable" lazy="true" rowKey="#{row.columns}" >
+                        <p:columnGroup type="header">
+                            <p:row>
+                                <p:column headerText="First Name" sortBy="#{row.columns[0]}" filterBy="#{row.columns[0]}" styleClass="col11l"/>
+                                <p:column headerText="Surname" sortBy="#{row.columns[1]}" filterBy="#{row.columns[1]}" styleClass="col11l"/>
+                                <p:column headerText="Telephone" sortBy="#{row.columns[2]}" filterBy="#{row.columns[2]}" styleClass="col11c"/>                                        
+                                <p:column headerText="Hourly Rate" sortBy="#{row.columns[3]}" filterBy="#{row.columns[3]}" styleClass="col11l"/>
+                                <p:column headerText="Email" sortBy="#{row.columns[4]}" filterBy="#{row.columns[4]}" styleClass="col11detailss"/>                                                                        
+                            </p:row>
+                        </p:columnGroup>
+                        <p:column styleClass="col11l">#{row.columns[0]}</p:column>
+                        <p:column styleClass="col11l">#{row.columns[1]}</p:column>
+                        <p:column styleClass="col11c">#{row.columns[2]}</p:column>
+                        <p:column styleClass="col11l">#{row.columns[3]}</p:column>
+                        <p:column styleClass="col11detailss">#{row.columns[4]}</p:column>                        
+                    </p:dataTable>
+                </p:fieldset>
+            </p:fieldset>
+        </h:form>
+    </ui:define>  
+</ui:composition>
